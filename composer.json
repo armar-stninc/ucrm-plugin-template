@@ -1,0 +1,16 @@
+{
+    "description": "This is a sample UCRM plugin.",
+    "version": "1.0.1",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "App\\": [
+                "classes/"
+            ]
+        }
+    },
+    "require": {
+        "ubnt/ucrm-plugin-sdk": ">=0.4",
+        "twig/twig": "^2.0"
+    }
+}

@@ -1,0 +1,74 @@
+{# views/base.html.twig #}
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8"/>
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>
+            {% block title %}Application
+            {% endblock %}
+        </title>
+
+        <link rel="stylesheet" href="/crm/assets/fonts/lato/lato.css?v=3.0.2">
+
+        <link rel="stylesheet" href="/crm/assets/fonts/ubnt-icon/ubnt-icon.css?v=3.0.2">
+        <link rel="stylesheet" href="/crm/assets/fonts/ucrm-icon/style.css?v=3.0.2">
+        <link rel="stylesheet" href="/crm/assets/vendor/jquery-ui/themes/smoothness/jquery-ui.min.css?v=3.0.2">
+        <link rel="stylesheet" href="/crm/assets/vendor/leaflet/leaflet.css?v=3.0.2">
+        <link rel="stylesheet" href="/crm/dist/main.min.css?v=3.0.2">
+
+        <link href="/crm/assets/images/favicon/favicon-152.png" rel="apple-touch-icon-precomposed">
+        <link href="/crm/assets/images/favicon/favicon-152.png" rel="apple-touch-icon-precomposed" sizes="152x152">
+        <link href="/crm/assets/images/favicon/favicon-144.png" rel="apple-touch-icon-precomposed" sizes="144x144">
+        <link href="/crm/assets/images/favicon/favicon-120.png" rel="apple-touch-icon-precomposed" sizes="120x120">
+        <link href="/crm/assets/images/favicon/favicon-72.png" rel="apple-touch-icon-precomposed" sizes="72x72">
+        <link href="/crm/assets/images/favicon/favicon-57.png" rel="apple-touch-icon-precomposed">
+        <link href="/crm/assets/images/favicon/favicon-32.png" rel="icon" sizes="32x32">
+        <link href="/crm/assets/images/favicon/favicon.ico" rel="shortcut icon">
+        <meta content="#0193d7" name="msapplication-TileColor">
+        <meta content="/crm/assets/images/favicon/favicon-144.png" name="msapplication-TileImage">
+        <meta name="theme-color" content="#0193d7">
+
+        <script type="text/javascript" src="/crm/dist/jquery.min.js?v=3.0.2"></script>
+    </head>
+
+    <body>
+        {% if navigation_menu is empty %}
+            <div id="page-header" class="page-header page-header--has-background">
+            {% else %}
+                <div id="page-header" class="page-header page-header--has-background page-header--has-navigation">
+                {% endif %}
+                <div class="page-header__top">
+                    <div class="page-header__left">
+                        <h1>
+                            {% block header %}Application Name
+                            {% endblock %}
+                        </h1>
+                        {% if header_button is not empty %}
+                            <a href="public.php?ucrm_action=create" data-modal-url="" class="button button--primary-fill button--page-header__left">
+                                <span class="icon icon--left ucrm-icon--plus"></span>
+                                <span>{{ header_button }}</span>
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+
+                {% if navigation_menu is not empty %}
+                    <div class="page-header__navigation">
+                        <ul class="page-header__navigation__menu">
+                            {% for key,value in navigation_menu %}
+                                <li class="page-header__navigation__menu__item {{ value }}">
+                                    <a href="#">{{ key }}</a>
+                                {% endfor %}
+                            </li>
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+            <div id="content" style="padding: 0 0;"> {% block body %}{% endblock %}
+                </div>
+            </body>
+        </body>
+    </html>

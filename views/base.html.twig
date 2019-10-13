@@ -1,0 +1,103 @@
+{# views/base.html.twig #}
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8"/>
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <title>
+            {% block title %}Application
+            {% endblock %}
+        </title>
+
+        <link rel="stylesheet" href="/crm/assets/fonts/lato/lato.css?v=3.0.2">
+
+        <link rel="stylesheet" href="/crm/assets/fonts/ubnt-icon/ubnt-icon.css?v=3.0.2">
+        <link rel="stylesheet" href="/crm/assets/fonts/ucrm-icon/style.css?v=3.0.2">
+        <link rel="stylesheet" href="/crm/assets/vendor/jquery-ui/themes/smoothness/jquery-ui.min.css?v=3.0.2">
+        <link rel="stylesheet" href="/crm/assets/vendor/leaflet/leaflet.css?v=3.0.2">
+        <link rel="stylesheet" href="public/main.css?{{ date().format('U') }}">
+        <link rel="stylesheet" href="public/custom.css?{{ date().format('U') }}">
+      
+        <link href="/crm/assets/images/favicon/favicon-152.png" rel="apple-touch-icon-precomposed">
+        <link href="/crm/assets/images/favicon/favicon-152.png" rel="apple-touch-icon-precomposed" sizes="152x152">
+        <link href="/crm/assets/images/favicon/favicon-144.png" rel="apple-touch-icon-precomposed" sizes="144x144">
+        <link href="/crm/assets/images/favicon/favicon-120.png" rel="apple-touch-icon-precomposed" sizes="120x120">
+        <link href="/crm/assets/images/favicon/favicon-72.png" rel="apple-touch-icon-precomposed" sizes="72x72">
+        <link href="/crm/assets/images/favicon/favicon-57.png" rel="apple-touch-icon-precomposed">
+        <link href="/crm/assets/images/favicon/favicon-32.png" rel="icon" sizes="32x32">
+        <link href="/crm/assets/images/favicon/favicon.ico" rel="shortcut icon">
+        <meta content="#0193d7" name="msapplication-TileColor">
+        <meta content="/crm/assets/images/favicon/favicon-144.png" name="msapplication-TileImage">
+        <meta name="theme-color" content="#0193d7">
+        <meta http-equiv="cache-control" content="max-age=0"/>
+        <meta http-equiv="cache-control" content="no-store"/>
+        <meta http-equiv="expires" content="-1"/>
+        <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT"/>
+        <meta http-equiv="pragma" content="no-cache"/>
+        
+        <script type="text/javascript" src="/crm/dist/jquery.min.js?v=3.0.2"></script>
+        <script src="public/custom.js?{{ date().format('U') }}"></script>   
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>  
+        <script src="public/select2.full.js?{{ date().format('U') }}"></script>  
+        <link rel="stylesheet" href="public/select2.css?{{ date().format('U') }}">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+        <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+        <script src="public/chart.bundle.js"></script>
+
+    </head>
+
+    <body>
+        {% if navigation_menu is empty %}
+            <div id="page-header" class="page-header page-header--has-background">
+            {% else %}
+                <div id="page-header" class="page-header page-header--has-background page-header--has-navigation">
+                {% endif %}
+                <div class="page-header__top">
+                    <div class="page-header__left">
+                        <h1>
+                            {% block header %}Application Name
+                            {% endblock %}
+                        </h1>
+                        {% if header_button is not empty %}
+                            {% block header_button_url %}
+                                <a href="public.php?ucrm_action=create" data-modal-url="" class="button button--primary-fill button--page-header__left">
+                                {% endblock %}
+                                <span class="icon icon--left ucrm-icon--plus"></span>
+                                <span>{{ header_button }}</span>
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+
+                {% if navigation_menu is not empty %}
+                    <div class="page-header__navigation">
+                        <ul class="page-header__navigation__menu">
+                            {% for key,value in navigation_menu %}
+                                <li class="page-header__navigation__menu__item {{ value }}">
+                                    <a href="public.php?ucrm_action=menu&menu={{ key }}">{{ key }}</a>
+                                {% endfor %}
+                            </li>
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+
+            <div id="content--inner" style="padding: 30px 80px 30px 30px;"> {% block body %}{% endblock %}
+                </div>
+                {% if toast.visible %}
+                    <div id="toast-container" class="toast-top-right">
+                {% else %}
+                    <div id="toast-container" class="toast-top-right invisible">
+                {% endif %}
+                        <div class="toast {{ toast.color }}" aria-live="polite" style="">
+                            <button type="button" class="toast-close-button" role="button">×</button>
+                            <div class="toast-message">{{ toast.message }}</div>
+                        </div>
+                    </div>
+                </body>
+            </body>
+        </body>
+    </html>

@@ -1,0 +1,112 @@
+{# views/index.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Template / Edit
+{% endblock %}
+{% block header %}Template / Edit
+{% endblock %}
+{% block body %}
+
+    <div class="content--inner">
+        <div class="content container--fixed verticalRhythm">
+            <div id="appbundle-grid-clientzone-invoicegridfactory-grid">
+                <div class="row grid">
+                    <div class="col--xs12">
+
+                        <form name="product" action="public.php" method="post" id="product-edit-form">
+
+                            <div class="row verticalRhythmHalf">
+                                <div class="col--xs12">
+                                    <div class="form-column">
+                                        <div class="form-box">
+                                            <div class="body">
+                                                <div class="row">
+                                                    <div class="col--xs4">
+                                                        <label class="appLabel--boxAlign required" for="product_name">Name</label>
+                                                    </div>
+                                                    <div class="col--xs8 appFormGroup">
+                                                        <input type="text" id="product_name" name="product[name]" required="required" class="input--full" value="Sample Name">
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col--xs4">
+                                                        <label class="appLabel--boxAlign">Field 1</label>
+                                                    </div>
+                                                    <div class="col--xs8 appFormGroup">
+                                                        <input type="text" id="field1" name="field1" class="input--full" value="Sample Text">
+
+                                                        <div class="help-icon" data-tooltip="If left empty, name will be used."></div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col--xs4">
+                                                        <label class="appLabel--boxAlign required">Field 2</label>
+                                                    </div>
+                                                    <div class="col--xs8 appFormGroup">
+                                                        <input type="text" id="field2" name="field2" required="required" class="input--full" value="Sample Text">
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col--xs4">
+                                                        <label class="appLabel--boxAlign">Field 3</label>
+                                                    </div>
+                                                    <div class="col--xs8 appFormGroup">
+                                                        <input type="text" id="field3" name="field3" class="input--full" value="Sample Text">
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col--xs4">
+                                                        <label class="appLabel--boxAlign">Yes/No Option</label>
+                                                    </div>
+                                                    <div class="col--xs8 appFormGroup appForm--cozy">
+                                                        <div data-on="yes" data-off="no" class="toggle appToggle">
+                                                            <input type="checkbox" id="optionyesno" name="optionyesno" value="1">
+                                                            <label></label>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col--xs4">
+                                                        <label class="appLabel--boxAlign">List Selection</label>
+                                                    </div>
+                                                    <div class="col--xs8 appFormGroup">
+                                                        <select id="listselection" name="listselection" class="input--full tax-choice" data-add-label="Add Selection" data-modal-url="">
+                                                            <option value="">Make a choice.</option>
+                                                            <option value="-1">Add value</option>
+                                                        </select>
+
+                                                        <div class="appInputHelp">
+                                                            If this selection is set, it will be always used for whatever.
+                                                            <a href="#" class="help-panel" data-help-section="listselection" data-help-anchor="anchor-item">Read more.</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form__ctrl col--xs12 alignRight">
+                                    <a href="public.php" class="button button--medium button--transparent">Cancel</a>
+                                    <button type="submit" class="button button--medium button--primary-fill">Save</button>
+                                </div>
+                            </div>
+                            <input type="hidden" name="ucrm_action" value="reload">
+                            <input type="hidden" id="product__token" name="product[_token]" value="ZbkSgi7gmDFYyACBEwUboowRGiRazbchTWbNYY0mflA"></form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

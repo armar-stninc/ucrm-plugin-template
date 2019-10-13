@@ -1,0 +1,54 @@
+{# views/index.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Template
+{% endblock %}
+{% block header %}Template
+{% endblock %}
+{% block body %}
+
+    <div class="content--inner">
+        <div class="content container--comfy">
+            <div id="appbundle-grid-clientzone-invoicegridfactory-grid">
+                <div class="row grid">
+                    <div class="col--xs12">
+                        <form action="#" method="get" class="grid__form ajax">
+                            <button class="enter-override" name="grid-do" value="filter" type="submit"></button>
+                            <div class="grid-control"></div>
+                            <table class="appTable grid-table">
+                                <thead>
+                                    <tr>
+                                        {% for heading in table_header %}
+                                            <th class="">
+                                                <a href="#" title="{{ heading }}" class="column-header sort-column appTableCell--truncated ajax">
+                                                    {{ heading }}
+                                                    <span class="sort-caret "></span>
+                                                </a>
+                                            </th>
+                                        {% endfor %}
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for row in table_content %}
+                                        <tr data-href="#" class="has-actions">
+                                            {% for content in row %}
+                                                {% if loop.last %}
+                                                    <td class="actions grid-hidden">
+                                                    {% else %}
+                                                        <td class="column-data alignCenter">
+                                                        {% endif %}
+                                                        {{ content | raw }}
+                                                    </td>
+                                                {% endfor %}
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </tbody>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

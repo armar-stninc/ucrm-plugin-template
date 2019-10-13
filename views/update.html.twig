@@ -1,0 +1,25 @@
+{# views/index.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Template / Update
+{% endblock %}
+{% block header %}Template / Update
+{% endblock %}
+{% block body %}
+
+    <div class="content--inner">
+        <div class="content container--comfy">
+            <div id="appbundle-grid-clientzone-invoicegridfactory-grid">
+                <div class="row grid">
+                    <div class="col--xs12">
+                        <h2>Updated!</h2>
+                        <p>This has been updated for product:
+                            {{ post.product_name }}
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
